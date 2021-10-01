@@ -9,7 +9,7 @@ router.get('/initialQA', (req, res) => {
       Authorization: apiToken
     },
     params: {
-      product_id: req.query.product_id,
+      product_id: (Number(req.query.product_id) - 47420),
       count: 50
     }
   })
@@ -37,7 +37,7 @@ router.put('/likeQuestion', (req, res) => {
           Authorization: apiToken
         },
         params: {
-          product_id: req.body.product,
+          product_id: Number(req.body.product) - 47420,
           count: 50
         }
       });
@@ -67,7 +67,7 @@ router.put('/likeAnswer', (req, res) => {
           Authorization: apiToken
         },
         params: {
-          product_id: req.body.product,
+          product_id: Number(req.body.product) - 47420,
           count: 50
         }
       });
@@ -97,7 +97,7 @@ router.put('/reportQuestion', (req, res) => {
           Authorization: apiToken
         },
         params: {
-          product_id: req.body.product,
+          product_id: Number(req.body.product) - 47420,
           count: 50
         }
       });
@@ -127,7 +127,7 @@ router.put('/reportAnswer', (req, res) => {
           Authorization: apiToken
         },
         params: {
-          product_id: req.body.product,
+          product_id: Number(req.body.product) - 47420,
           count: 50
         }
       });
@@ -158,7 +158,7 @@ router.post('/submitQuestion', (req, res) => {
           Authorization: apiToken
         },
         params: {
-          product_id: req.body.product_id,
+          product_id: Number(req.body.product_id) - 47420,
           count: 50
         }
       });
@@ -195,7 +195,7 @@ router.post('/submitAnswer', (req, res) => {
           Authorization: apiToken
         },
         params: {
-          product_id: req.body.product_id,
+          product_id: Number(req.body.product_id) - 47420,
           count: 50
         }
       });
