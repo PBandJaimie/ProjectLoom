@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const axios = require('axios');
-const { apiToken, apiURL } = require('./../../config.js');
+const { apiToken, questionsURL } = require('./../../config.js');
 
 router.get('/initialQA', (req, res) => {
-  axios.get(`${apiURL}qa/questions`, {
+  axios.get(`${questionsURL}qa/questions`, {
     method: 'GET',
     headers: {
       Authorization: apiToken
@@ -23,7 +23,7 @@ router.get('/initialQA', (req, res) => {
 });
 
 router.put('/likeQuestion', (req, res) => {
-  axios.put(`${apiURL}qa/questions/${req.body.id}/helpful`, {
+  axios.put(`${questionsURL}qa/questions/${req.body.id}/helpful`, {
     question_id: req.body.id
   }, {
     headers: {
@@ -31,7 +31,7 @@ router.put('/likeQuestion', (req, res) => {
     }
   })
     .then((response) => {
-      return axios.get(`${apiURL}qa/questions`, {
+      return axios.get(`${questionsURL}qa/questions`, {
         method: 'GET',
         headers: {
           Authorization: apiToken
@@ -53,7 +53,7 @@ router.put('/likeQuestion', (req, res) => {
 });
 
 router.put('/likeAnswer', (req, res) => {
-  axios.put(`${apiURL}qa/answers/${req.body.id}/helpful`, {
+  axios.put(`${questionsURL}qa/answers/${req.body.id}/helpful`, {
     answer_id: req.body.id
   }, {
     headers: {
@@ -61,7 +61,7 @@ router.put('/likeAnswer', (req, res) => {
     }
   })
     .then((response) => {
-      return axios.get(`${apiURL}qa/questions`, {
+      return axios.get(`${questionsURL}qa/questions`, {
         method: 'GET',
         headers: {
           Authorization: apiToken
@@ -83,7 +83,7 @@ router.put('/likeAnswer', (req, res) => {
 });
 
 router.put('/reportQuestion', (req, res) => {
-  axios.put(`${apiURL}qa/questions/${req.body.id}/report`, {
+  axios.put(`${questionsURL}qa/questions/${req.body.id}/report`, {
     question_id: req.body.id
   }, {
     headers: {
@@ -91,7 +91,7 @@ router.put('/reportQuestion', (req, res) => {
     }
   })
     .then((response) => {
-      return axios.get(`${apiURL}qa/questions`, {
+      return axios.get(`${questionsURL}qa/questions`, {
         method: 'GET',
         headers: {
           Authorization: apiToken
@@ -113,7 +113,7 @@ router.put('/reportQuestion', (req, res) => {
 });
 
 router.put('/reportAnswer', (req, res) => {
-  axios.put(`${apiURL}qa/answers/${req.body.id}/report`, {
+  axios.put(`${questionsURL}qa/answers/${req.body.id}/report`, {
     question_id: req.body.id
   }, {
     headers: {
@@ -121,7 +121,7 @@ router.put('/reportAnswer', (req, res) => {
     }
   })
     .then((response) => {
-      return axios.get(`${apiURL}qa/questions`, {
+      return axios.get(`${questionsURL}qa/questions`, {
         method: 'GET',
         headers: {
           Authorization: apiToken
@@ -145,14 +145,14 @@ router.put('/reportAnswer', (req, res) => {
 router.post('/submitQuestion', (req, res) => {
   axios({
     method: 'POST',
-    url: `${apiURL}qa/questions`,
+    url: `${questionsURL}qa/questions`,
     headers: {
       Authorization: apiToken
     },
     data: req.body
   })
     .then((response) => {
-      return axios.get(`${apiURL}qa/questions`, {
+      return axios.get(`${questionsURL}qa/questions`, {
         method: 'GET',
         headers: {
           Authorization: apiToken
@@ -182,14 +182,14 @@ router.post('/submitAnswer', (req, res) => {
   };
   axios({
     method: 'POST',
-    url: `${apiURL}qa/questions/${req.body.qid}/answers`,
+    url: `${questionsURL}qa/questions/${req.body.qid}/answers`,
     headers: {
       Authorization: apiToken
     },
     data: answerForm
   })
     .then((response) => {
-      return axios.get(`${apiURL}qa/questions`, {
+      return axios.get(`${questionsURL}qa/questions`, {
         method: 'GET',
         headers: {
           Authorization: apiToken
@@ -213,7 +213,7 @@ router.post('/submitAnswer', (req, res) => {
 router.post('/logInteraction', (req, res) => {
   axios({
     method: 'POST',
-    url: `${apiURL}interactions`,
+    url: `${questionsURL}interactions`,
     headers: {
       Authorization: apiToken
     },

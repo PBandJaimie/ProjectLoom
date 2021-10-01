@@ -4,6 +4,6 @@ module.exports = {
   herokuOffset: 47420,
   overviewURL: '',
   relatedURL: 'localhost:7778',
-  questionsURL: '',
+  questionsURL: 'localhost:3000',
   reviewsURL: ''
 };
